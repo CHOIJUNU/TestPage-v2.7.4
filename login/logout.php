@@ -1,5 +1,5 @@
 <?php
 session_start();
-session_destroy(); // ¼¼¼Ç Á¦°Å
+session_destroy(); // ì„¸ì…˜ ì œê±°
 echo "<script>alert('Going to main page...');location.replace('../index.php');</script>";
 ?>
