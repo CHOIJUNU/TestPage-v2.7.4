@@ -3,8 +3,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Forum</a>
-</h1>
+    <h1>Forum</h1>
 <h4>Community for users!</h4>
 <form action="write_ok.php" method="post">
     <textarea
