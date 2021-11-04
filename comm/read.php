@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<?php session_start();
+	include $_SERVER['DOCUMENT_ROOT']."/dbconn.php";
+?>
+<body>
+	<?php
+		$no = $_GET['idx']; // 현재 글의 번호를 no에 저장
+		$hit = mysqli_fetch_array(query("select * from board where idx ='".$no."'")); 
+        // 쿼리문이 문자열로 되어있으므로 .으로 연결시켜줌
+		$hit = $hit['hit'] + 1; // 버튼 클릭 시 조회수 증가
+		$update = query("update board set hit = '".$hit."' where idx = '".$no."'");
+        // 현재 글의 번호에 해당하는 테이블에 증가한 조회수 값 업데이트
+		$sql = query("select * from board where idx='".$no."'"); 
+		$board = $sql->fetch_array(); // 업데이트된 값을 다시 넣어줌
+	?>
+
+	<h2><?php echo $board['title']; ?></h2>
+		ID: <?php echo $board['name']; echo "<br>";?> 
+        Date: <?php echo $board['date']; echo "<br>";?> 
+        Hit: <?php echo $board['hit']; ?>
+		<?php
+        echo "<br><hr>";
+        echo nl2br("$board[content]"); 
+        echo "<br><hr>";
+        ?>
+
+        <a href="community.php"><button>Back</button></a>
+
+        <?php
+        if($_SESSION['id'] == $board['name']){ // isset함수로 작성자 id와 일치하는 지 확인
+        echo "<a href=\"modify.php?idx=".$board['idx']."\";><button>Modify</button></a>\n"; // 로그인이 되어 있을 경우 게시판과 로그아웃을 활성화
+        echo "<a href=\"delete.php?idx=".$board['idx']."\";><button>Delete</button></a>";
+        }
+?>
+</body>
+</html>
