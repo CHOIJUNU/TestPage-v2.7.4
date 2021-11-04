@@ -1,7 +1,7 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/dbconn.php"; // DBÁ¢¼Ó
+include $_SERVER['DOCUMENT_ROOT']."/dbconn.php"; // DBì ‘ì†
 
-// º¯¼ö¿¡ POST·Î °ª Ãß°¡
+// ë³€ìˆ˜ì— POSTë¡œ ê°’ ì¶”ê°€
 $id = $_POST['id'];
 $pwd = $_POST['pwd'];
 $name = $_POST['name'];
