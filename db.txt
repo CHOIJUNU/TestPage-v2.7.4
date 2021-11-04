@@ -1,3 +1,0 @@
-DB: junwoo
-Table: member - id(unique), pwd, name, birth(datetime), email, phone
-       board  - idx(pm, ai), title, name, content, date(datetime), hit

@@ -1,0 +1,8 @@
+DB: junwoo
+Table: member - id(unique), pwd, name, birth(datetime), email, phone
+       board  - idx(pm, ai), title, name, content, date(datetime), hit
+      
+v2.0.0 = login, sign up, forum with one session(connecting user info with pages)
+
+//to be updated// 
+v2.0.1 = paging forum and be able to search posted in forum
