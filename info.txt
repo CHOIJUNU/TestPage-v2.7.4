@@ -3,9 +3,9 @@ Table: member - id(unique), pwd, name, birth(datetime), email, phone
        board  - idx(pm, ai), title, name, content, date(datetime), hit
       
 v2.0.0 = login, sign up, forum with one session(connecting user info with pages)
+v2.0.1 = paging forum
 
 //to be updated// 
-v2.0.1 = paging forum
 v2.0.1(extended) = be able to search posted in forum
 v2.0.2 = be able to comment in posted
 v2.0.3 = be able to upload file in forum
