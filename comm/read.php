@@ -32,6 +32,7 @@
 			Date: <?php echo $reply['date']; echo "<br>";?>
             <?php 
             echo nl2br("$reply[content]");
+            echo "<br>";
             ?> 
             <?php
             if($_SESSION['id'] == $reply['name']){ // isset함수로 작성자 id와 일치하는 지 확인
