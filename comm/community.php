@@ -39,9 +39,8 @@ if(isset($_GET['page'])){
 // ----------------------------------------------------------------------------------
 
 $sql2 = query("select * from board order by idx desc limit ".$start_num.", ".$list."");
-// dbconn에 있는 query함수를 실행, 0부터 10까지 내림차순
-while($board = $sql2->fetch_array())
-{ //board변수에 쿼리문을 통해 얻은 데이터를 배열로 정리
+// dbconn에 있는 query함수를 실행
+while($board = $sql2->fetch_array()){ // board변수에 쿼리문을 통해 얻은 데이터를 배열로 정리
   $title=$board["title"]; 
   if(strlen($title)>30)
   { // title변수의 문자열길이가 30이상일 때
@@ -102,6 +101,16 @@ if($page <= 1){
     }
 ?>
 </form>
+<br>
+<form align="center" action="search.php" method="get">
+      <select name="cate">
+        <option value="title">Title</option>
+        <option value="name">Name</option>
+        <option value="content">Content</option>
+      </select>
+      <input type="text" name="search" size="35" required="required">
+      <button>Search</button>
+    </form>
 <hr>
 <a href="../index.php"><button>Back</button></a>
 <a href="write.php"><button>Write</button></a>
