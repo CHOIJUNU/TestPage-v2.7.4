@@ -29,7 +29,7 @@ if(isset($_GET['page'])){
       $search = $_GET['search'];
       
       // 검색 쿼리
-      $sql = query("select * from board where ".$category." like '%{$search}%' order by idx desc");
+      $sql = query("select * from board where ".$category." like '%".$search."%' order by idx desc");
       
       $row_num = @mysqli_num_rows($sql); // 게시물 수
       $list = 5; // 리스트 개수
@@ -46,7 +46,7 @@ if(isset($_GET['page'])){
 // ----------------------------------------------------------------------------------
 
 // 검색된 게시글 불러오기
-$sql = query("select * from board where ".$category." like '%{$search}%' order by idx desc limit ".$start_num.", ".$list."");
+$sql = query("select * from board where ".$category." like '%".$search."%' order by idx desc limit ".$start_num.", ".$list."");
 while($board = $sql->fetch_array()){ // board변수에 쿼리문을 통해 얻은 데이터를 배열로 정리
   $title=$board["title"]; 
   if(strlen($title)>30)
@@ -73,14 +73,14 @@ while($board = $sql->fetch_array()){ // board변수에 쿼리문을 통해 얻�
 if($page <= 1){ 
   echo "[Front]";
   }else{
-  echo "<a href='?page=1'>[Front]</a>";
+  echo "<a href='?cate=$category&search=$search&page=1'>[Front]</a>";
   }
 
   if($block <= 1){ 
     echo "[Back]";
   }else{
   $pre = $block_start-1;
-  echo "<a href='?page=$pre'>[Back]</a>";
+  echo "<a href='?cate=$category&search=$search&page=$pre'>[Back]</a>";
   }
   
 
@@ -88,7 +88,7 @@ if($page <= 1){
     if($page == $i){ 
     echo "[$i]";
     }else{
-    echo "<a href='?page=$i'>[$i]</a>";
+    echo "<a href='?cate=$category&search=$search&page=$i'>[$i]</a>";
     }}
     
 
@@ -96,14 +96,14 @@ if($page <= 1){
     echo "[Next]";
     }else{
     $next = $block_end+1;
-    echo "<a href='?page=$next'>[Next]</a>";
+    echo "<a href='?cate=$category&search=$search&page=$next'>[Next]</a>";
     }
   
   
     if($page >= $total_page){ 
       echo "[End]";
       }else{
-      echo "<a href='?page=$total_page'>[End]</a>";
+      echo "<a href='?cate=$category&search=$search&page=$total_page'>[End]</a>";
     }
 ?>
 </form>
