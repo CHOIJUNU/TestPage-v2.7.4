@@ -6,6 +6,5 @@ v2.3.0 = be able to comment in posted
 
 //to be updated// 
 v2.4.0 = be able to upload file in forum
-v2.5.0 = posted like & unlike
-v2.6.1 = disable forum no. and charset patch
-v2.6.0 = be able to find user's pwd
+v2.4.1 = disable forum no. and charset patch
+v2.5.0 = be able to find user's pwd
