@@ -1,3 +1,8 @@
+DB: junwoo
+
+
+<TABLE>
+
 CREATE TABLE `member` (
 	`id` VARCHAR(50) NULL DEFAULT NULL COMMENT '아이디' COLLATE 'utf8_general_ci',
 	`pwd` VARCHAR(50) NULL DEFAULT NULL COMMENT '비번' COLLATE 'utf8_general_ci',
