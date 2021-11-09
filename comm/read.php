@@ -38,7 +38,7 @@
             if($_SESSION['id'] == $reply['name']){ // isset함수로 작성자 id와 일치하는 지 확인
             echo "<br>";
             echo "<a href=\"reply_modify.php?idx=".$reply['idx']."\";><button>Modify</button></a>\n"; // 로그인이 되어 있을 경우 게시판과 로그아웃을 활성화
-            echo "<a href=\"delete.php?idx=".$reply['idx']."\";><button>Delete</button></a>";
+            echo "<a href=\"reply_delete.php?idx=".$reply['idx']."\";><button>Delete</button></a>";
             echo "<br><hr>";
             }else{
                 echo "<br><hr>";
