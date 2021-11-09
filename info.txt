@@ -1,7 +1,3 @@
-DB: junwoo
-Table: member - id(unique), pwd, name, birth(datetime), email, phone
-       board  - idx(pm, ai, int), title, name, content(text), date(datetime), hit(int)
-
 <PATCH NOTE>
 v2.0.0 = login, sign up, forum with one session(connecting user info with pages)
 v2.1.0 = paging forum
