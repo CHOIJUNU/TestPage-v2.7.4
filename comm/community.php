@@ -5,11 +5,11 @@ include $_SERVER['DOCUMENT_ROOT']."/dbconn.php"; // DB접속
 <body>
 <h1>Forum</h1>
 <h4>Community for users!</h4>
-<table border='1'>
+<table border="!" style="border-collapse:collapse; border:1px gray solid;" align="center">
 <thead>
 <tr>
-<th width="70">No.</th>
-<th width="500">Title</th>
+<!-- <th width="70">No.</th> -->
+<th width="400">Title</th>
 <th width="120">Name</th>
 <th width="100">Date</th>
 <th width="100">Hit</th>
@@ -50,8 +50,8 @@ while($board = $sql2->fetch_array()){ // board변수에 쿼리문을 통해 얻�
 ?>
 <tbody>
 <tr align="center">
-<td width="70"><?php echo $board["idx"]; ?></td>
-<td width="500"><a href="read.php?idx=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
+<!-- <td width="70"><?php //echo $board["idx"]; ?></td> -->
+<td width="400"><a href="read.php?idx=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
 <td width="120"><? echo $board["name"]; // 사용자 id 출력 ?></td>
 <td width="200"><? echo $board["date"];?></td>
 <td width="100"><? echo $board["hit"];?></td>
