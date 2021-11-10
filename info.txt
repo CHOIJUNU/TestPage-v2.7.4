@@ -3,8 +3,8 @@ v2.0.0 = login, sign up, forum with one session(connecting user info with pages)
 v2.1.0 = paging forum
 v2.2.0 = be able to search posted in forum
 v2.3.0 = be able to comment in posted
+v2.4.0 = be able to upload file in forum
 
 //to be updated// 
-v2.4.0 = be able to upload file in forum
 v2.4.1 = charset patch
 v2.5.0 = be able to find user's pwd
