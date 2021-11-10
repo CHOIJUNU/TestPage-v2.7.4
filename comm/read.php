@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
 	include $_SERVER['DOCUMENT_ROOT']."/dbconn.php";
+    header("Content-Type:text/html; charset=utf-8");
 ?>
 <body>
 	<?php
@@ -17,9 +18,13 @@
 	<h2><?php echo $board['title']; ?></h2>
 		ID: <?php echo $board['name']; echo "<br>";?> 
         Date: <?php echo $board['date']; echo "<br>";?> 
-        Hit: <?php echo $board['hit']; ?>
+        Hit: <?php echo $board['hit']; //echo "<br>";?>
+        <!-- File: <a href="upload/<?php //echo $board['file'];?>" download><?php //echo "<img src='upload/$board[file]'><br>"; echo $board['file'];?></a> -->
+        <!-- 파일  다운로드 코드 -->
 		<?php
         echo "<br><hr>";
+        if(!empty($board['file'])){ // 만약 파일을 업로드 했을 경우 파일을 출력
+        echo "<img src='upload/$board[file]'><br>";}
         echo nl2br("$board[content]"); // n12br로 문자열 띄어쓰기 활성화
         echo "<br><hr>";
         ?>
