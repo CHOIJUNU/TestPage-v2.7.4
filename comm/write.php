@@ -14,7 +14,7 @@
         placeholder="Title"
         maxlength="100"
         required="required"></textarea><br>
-    <textarea name="content" placeholder="Content" required="required"></textarea><br>
+    <textarea name="content" cols="40" placeholder="Content" required="required"></textarea><br>
     <input type="file" name="imgfile">
    <br> <button type="submit">Write</button>
 </form>
