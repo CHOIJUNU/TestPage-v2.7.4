@@ -44,7 +44,7 @@
             echo "<br>";
             echo "<a href=\"reply_modify.php?idx=".$reply['idx']."\";><button>Modify</button></a>\n"; // 로그인이 되어 있을 경우 게시판과 로그아웃을 활성화
             echo "<a href=\"reply_delete.php?idx=".$reply['idx']."\";><button>Delete</button></a>";
-            echo "<br><hr>";
+            echo "<hr>";
             }else{
                 echo "<br><hr>";
             }}?>
