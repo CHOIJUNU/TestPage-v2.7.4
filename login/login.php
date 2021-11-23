@@ -2,6 +2,10 @@
     if($_REQUEST['id'] && $_REQUEST['pwd']){
         $common->on_login();
     }
+
+    if($_REQUEST['logout']){
+        $common->logout();
+    }
 ?>
 <!DOCTYPE html>
 <link rel="stylesheet" href="login/css/log.css">
