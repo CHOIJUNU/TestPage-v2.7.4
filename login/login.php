@@ -1,31 +1,24 @@
+<?php
+    if($_REQUEST['id'] && $_REQUEST['pwd']){
+        $common->on_login();
+    }
+?>
 <!DOCTYPE html>
-<?php session_start(); 
-include $_SERVER['DOCUMENT_ROOT']."/dbconn.php"; // DB접속
-?>
-
-<head>
-    <h3>Login</h3>
-</head>
-
+<link rel="stylesheet" href="login/css/log.css">
 <body>
-
-    <?php if(isset($_SESSION['id'])) { // iseet함수로 로그인 정보가 있는 지 확인
-$uid = $_SESSION['id'];
-echo "$uid already login.";
-echo "<a href=\"../index.php\"><button>Back</button></a> "; // 뒤로가기와 로그아웃 버튼 활성화
-echo "<a href=\"logout.php\"><button>Logout</button></a>";    
-}
+<?php
+    $common->logincheck_login();
 ?>
-
-    <form method="post" action="common.php">
-        <input type="text" name="id" autofocus="true" required="true" placeholder="ID">
-        <input type="password" name="pwd" required="true" placeholder="Password">
-        <input type="submit" value="Login">
+    <form action="?mode=login" method="post">
+        <div class="login wrap">
+            <input type="text" name="id" autofocus="true" required="true" placeholder="ID" autocomplete="off">
+            <input type="password" name="pwd" id="password" required="true" placeholder="Password">
+            <input type="submit" value="Let me in!">
+            <input type="button" value="Sign up?" onclick="location.href='?mode=sign_up'">
+        </div>
     </form>
 
-    <a href="password.php"><button>Forgot pwd?</button></a>
-    <a href="sign_up.php"><button>Sign up</button></a>
-
 </body>
-
+<div class="underlay-photo"></div>
+<div class="underlay-black"></div>
 </html>
