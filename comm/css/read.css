@@ -1,0 +1,71 @@
+* {
+    color:#FFFFFF;
+}
+
+
+table {
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    border-bottom:none;
+    color: white;
+  }
+   td {
+    background: rgba(255, 255, 255, 0.397);
+    color: white;
+  }
+
+  th {
+    background: rgba(255, 255, 255, 0.658);
+    color: white;
+  }
+
+  th, td {
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    border-bottom:none;
+    padding: 8px;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background: #efefef;
+  }
+  
+  tr:hover {
+    background: #d1d1d1;
+  }
+
+[class*=underlay] {
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.underlay-photo {
+    animation: hue-rotate 4s infinite;
+    background: url('https://get.wallhere.com/photo/1920x1200-px-ART-artistic-artwork-creepy-dark-evil-fantasy-Halloween-horror-original-scary-spooky-1872787.jpg');
+    background-size: cover;
+    -webkit-filter: grayscale(30%);
+    z-index: -1;
+}
+.underlay-black {
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+
+@keyframes hue-rotate {
+    from {
+      -webkit-filter: grayscale(30%) hue-rotate(0deg);
+    }
+    to {
+      -webkit-filter: grayscale(30%) hue-rotate(360deg);
+    }
+}
+
+button, textarea, select, option, input {
+    color:#000000;
+}
