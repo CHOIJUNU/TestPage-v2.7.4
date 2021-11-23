@@ -1,0 +1,93 @@
+* {
+    color:#FFFFFF;
+    text-align: center;
+}
+
+body, html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+.wrap {
+    margin: 0 auto;
+} 
+.login {
+    width: 300px;
+    margin-top: 40vh;
+}
+
+[class*=underlay] {
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.underlay-photo {
+    animation: hue-rotate 4s infinite;
+    background: url('https://c.wallhere.com/photos/19/19/1920x1200_px_art_artistic_artwork_creepy_Dark_Evil_fantasy-1870879.jpg!d');
+    background-size: cover;
+    -webkit-filter: grayscale(30%);
+    z-index: -1;
+}
+.underlay-black {
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+
+@keyframes hue-rotate {
+    from {
+      -webkit-filter: grayscale(30%) hue-rotate(0deg);
+    }
+    to {
+      -webkit-filter: grayscale(30%) hue-rotate(360deg);
+    }
+}
+
+button {
+  border: 0;
+  outline: 0;
+  padding: 13px 18px;
+  margin: auto;
+  display: block;
+  border-radius: 2px;
+  font-weight: 600;
+  background: #fff;  
+  color: #34495e;
+  outline: none;
+}
+
+.button {
+  border: 0;
+  outline: 0;
+  padding: 13px 18px;
+  margin: auto;
+  display: block;
+  border-radius: 2px;
+  font-weight: 600;
+  background: #fff;  
+  color: #34495e;
+  outline: none;
+  animation: bounce 1s;
+}
+
+.button2 {
+  border: 0;
+  outline: 0;
+  padding: 13px 18px;
+  margin: auto;
+  display: block;
+  border-radius: 2px;
+  font-weight: 600;
+  background: #fff;  
+  color: #34495e;
+  outline: none;
+  animation: bounce 1.6s;
+}
+
+@keyframes bounce {
+  0% {  opacity: 0; }
+  30% { transform: translateY(-80px); opacity: 0;}
+} 
