@@ -1,9 +1,9 @@
 <?php
-$where = " ";
+    $where = " ";
 
-if($_REQUEST['search_type'] && $_REQUEST['search']){
-    $where .= " where ".$_REQUEST['search_type']." like '%".$_REQUEST['search']."%' ";
-}
+    if($_REQUEST['search_type'] && $_REQUEST['search']){
+        $where .= " where ".$_REQUEST['search_type']." like '%".$_REQUEST['search']."%' ";
+    }
 ?>
 <!DOCTYPE html>
 <link rel="stylesheet" href="comm/css/comm.css">
@@ -35,7 +35,7 @@ if($_REQUEST['search_type'] && $_REQUEST['search']){
         <br>
 
         <form align="center" action="?mode=forum" method="get">
-        <input type = "hidden" name = "mode" value = "<?=$_REQUEST['mode']?>">
+            <input type = "hidden" name = "mode" value = "<?=$_REQUEST['mode']?>">
             <select name="search_type">
                 <option value="title">Title</option>
                 <option value="name">Name</option>
