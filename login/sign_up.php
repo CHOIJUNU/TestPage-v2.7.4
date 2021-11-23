@@ -1,17 +1,15 @@
+<?php
+    if($_REQUEST['id'] && $_REQUEST['pwd'] && $_REQUEST['name'] && $_REQUEST['birth'] && $_REQUEST['email'] && $_REQUEST['phone'])
+    {
+        $common->sign_up();
+    }
+?>
 <!DOCTYPE html>
-
-<head>
-    <h3>Sign up</h3>
-</head>
-
+<link rel="stylesheet" href="login/css/sign.css">
 <body>
-
-    <form action="sign_up_ok.php" method="post">
-        <h1>
-            Sign Up
-        </h1>
-        <fieldset>
-            <legend>Your Basic Info</legend>
+    <form action="?mode=sign_up" method="post">
+        <div class="login wrap">
+            <h1>Sign Up</h1>
 
             <label>ID:</label>
             <input type="text" name="id"><br>
@@ -30,11 +28,11 @@
 
             <label>Phone:</label>
             <input type="text" name="phone">
-
-        </fieldset>
-        <button type="submit">Submit</button>
+            <input type="submit" value="Submit">
+        
+        </div>
     </form>
-
 </body>
-
+<div class="underlay-photo"></div>
+<div class="underlay-black"></div>
 </html>
