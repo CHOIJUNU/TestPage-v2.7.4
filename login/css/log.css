@@ -1,0 +1,102 @@
+* {
+    color:#FFFFFF;
+}
+
+button, textarea, select, option, input {
+    color:#000000;
+}
+
+[class*=underlay] {
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.underlay-photo {
+    animation: hue-rotate 4s infinite;
+    background: url('https://c.wallhere.com/photos/19/19/1920x1200_px_art_artistic_artwork_creepy_Dark_Evil_fantasy-1870879.jpg!d');
+    background-size: cover;
+    -webkit-filter: grayscale(30%);
+    z-index: -1;
+}
+.underlay-black {
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+
+@keyframes hue-rotate {
+    from {
+      -webkit-filter: grayscale(30%) hue-rotate(0deg);
+    }
+    to {
+      -webkit-filter: grayscale(30%) hue-rotate(360deg);
+    }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+.wrap {
+  margin: 0 auto;
+} 
+.login {
+  width: 300px;
+  margin-top: 40vh;
+}
+.login input[type=text],
+.login input[type=email],
+.login input[type=password] {
+  opacity: 1;
+  display: block;
+  border: none;
+  outline: none;
+  width: 280px;
+  padding: 10px;
+  margin: 20px 0 0 0;
+  border-radius: 2px;
+}
+.login input[type=text],
+.login input[type=email] {
+  animation: bounce 1s;
+  -webkit-appearance: none;
+}
+.login input[type=password] {
+  animation: bounce1 1.3s;
+}
+.login input[type=submit],
+.login input[type=button] {
+  border: 0;
+  outline: 0;
+  padding: 13px 18px;
+  margin: 40px 0 0 0;
+  border-radius: 2px;
+  font-weight: 600;
+  animation: bounce2 1.6s;
+} 
+.login input[type=submit] {
+  float: right;
+  background: #fff;  
+  color: #34495e;
+  outline: none;
+}
+.login input[type=button] {
+  background: #2C3E50;
+  color: #475e75;
+}
+@keyframes bounce {
+  0% { transform: translateY(-250px); opacity: 0; }
+} 
+@keyframes bounce1 {
+  0% {  opacity: 0; }
+  40% { transform: translateY(-100px); opacity: 0;}
+}
+@keyframes bounce2 {
+  0% {  opacity: 0; }
+  70% { transform: translateY(-20px); opacity: 0;}
+}          
