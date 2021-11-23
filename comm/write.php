@@ -3,7 +3,7 @@
         $forum->write();
     }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <link rel="stylesheet" href="comm/css/comm.css">
 <head>
     <meta charset="UTF-8">
