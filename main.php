@@ -1,3 +1,8 @@
+<?php
+    if($_REQUEST['logout']){
+        $common->logout();
+    }
+?>
 <!DOCTYPE html>
 <link rel="stylesheet" href="main.css">
 
