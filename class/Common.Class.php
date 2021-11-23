@@ -3,7 +3,6 @@
 class Common
 {
     var $common;
-    var $db;
 
     //# DB접속 및 세선 시작
     function dbconn()
