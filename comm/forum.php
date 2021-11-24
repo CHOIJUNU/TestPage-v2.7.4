@@ -44,7 +44,6 @@
             <input type="text" name="search" size="35" required="required">
             <button>Search</button>
         </form>
-
     </body>
 <div class="underlay-photo"></div>
 <div class="underlay-black"></div>
