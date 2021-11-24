@@ -13,8 +13,8 @@
 ?>
 <!DOCTYPE html>
 <link rel="stylesheet" href="comm/css/read.css">
-<body>
-<a href="?mode=forum"><button>Back</button></a><br>
+<body><br>
+<a href="?mode=forum"><button>Back</button></a><br><br><br><br>
 	<?php
         $forum->read();
 	?>
