@@ -241,7 +241,7 @@ class Forum
                 echo "<a href=\"?mode=reply_mod&idx=".$reply['idx']."\";><button>Modify</button></a>\n";
                 echo "<form action=\"?mode=read&idx=".$reply['idx']."\" method=\"post\">
                 <input type = \"hidden\" name = \"reply_del\" value = \"reply_del\"><button>Delete</button></form>";
-                echo "<br><hr>";
+                echo "<br><br><hr>";
             }else{
                 echo "<hr>";
             }
