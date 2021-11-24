@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="login/css/sign.css">
 <body>
     <form action="?mode=sign_up" method="post">
-        <div class="login wrap">
+        <div class="sign wrap">
             <h1>Sign Up</h1>
 
             <label>ID:</label>
