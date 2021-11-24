@@ -216,6 +216,8 @@ class Forum
         $no = $_GET['idx'];
 	    $sql = "delete from board where idx='$no'";
 	    $result = mysqli_query($db, $sql);
+        $sql = "delete from reply where num='$no'";
+	    $result = mysqli_query($db, $sql);
 
         echo "<script>alert(\"Deleted!\");</script>
         <meta http-equiv=\"refresh\" content=\"0 url=?mode=forum\">";
