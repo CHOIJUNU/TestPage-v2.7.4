@@ -18,7 +18,7 @@ table {
   }
 
   th {
-    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.877);
     font-weight: bold;
     font-size: 20px;
 
