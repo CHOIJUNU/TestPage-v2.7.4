@@ -76,7 +76,7 @@ class Forum
               echo "Back";
             }else{
                 $pre = $block_start-1;
-                echo "<a href='?mode=forum&page=$pre&search_type=$search_type&search=$search'>Back</a>";
+                echo "<a style=\"color:red;font-size:15px;\" href='?mode=forum&page=$pre&search_type=$search_type&search=$search'>Back</a>";
             }
             
           
@@ -85,7 +85,7 @@ class Forum
               if($page == $i){ 
               echo "\n$i\n";
             }else{
-              echo "<a href='?mode=forum&page=$i&search_type=$search_type&search=$search'>\n$i</a>";
+              echo "<a style=\"color:red;font-size:15px;\" href='?mode=forum&page=$i&search_type=$search_type&search=$search'>\n$i</a>";
             }}
               
           
@@ -94,7 +94,7 @@ class Forum
               echo "\nNext";
             }else{
               $next = $block_end+1;
-              echo "<a href='?mode=forum&page=$next&search_type=$search_type&search=$search'>\nNext</a>";
+              echo "<a style=\"color:red;font-size:15px;\" href='?mode=forum&page=$next&search_type=$search_type&search=$search'>\nNext</a>";
             }
             
             
