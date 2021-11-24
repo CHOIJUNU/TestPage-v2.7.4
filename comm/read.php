@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="comm/css/read.css">
 <body>
+<a href="?mode=forum"><button>Back</button></a><br>
 	<?php
         $forum->read();
 	?>
@@ -24,8 +25,7 @@
     <form action="?mode=read&idx=<?php $no = $_GET['idx']; echo $no; ?>" method="post">
 		<textarea name="content"></textarea><br>
 		<button>Comment</button>
-	</form>
-       <a href="?mode=forum"><button>Back</button></a>
+	</form><br><br>
     <?php
         $forum->read_btn();
     ?>
