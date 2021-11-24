@@ -14,7 +14,7 @@ class Forum
             $page = $_GET['page'];
         }else{$page = 1;}
         
-        $list = 5; // 리스트 개수
+        $list = 10; // 리스트 개수
         $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다
 
         $sql = " select * from board ";
@@ -22,18 +22,22 @@ class Forum
         $result = mysqli_query($db, $sql);
 
         while($board = mysqli_fetch_array($result))
-        {
-            $title=$board["title"]; 
+        {            
+            $title=$board["title"];
+
+            $sql2 = "select count(*) as cnt from reply where num=".$board['idx']."";
+            $result2 = mysqli_query($db, $sql2);
+		    $reply_count = mysqli_fetch_array($result2);
+
                 if(strlen($title)>30)
                 { 
                     $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
-                } 
+                }     
 
-            echo "<tbody><tr align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title."</a></td>";
+            echo "<tbody><tr class=\"tr\" align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title." <b style=\"font-size:15px; color:red;\">[".$reply_count['cnt']."]</b></a></td>";
             echo "<td width=\"120\">".$board['name']." </td>";
             echo "<td width=\"200\">".$board['date']."</td>";
             echo "<td width=\"100\">".$board['hit']."</td></tr></tbody>";
-        
         }
     }
 
@@ -50,7 +54,7 @@ class Forum
             $sql .= " ".$where." ";
             $result = mysqli_query($db, $sql);
             $row_num = mysqli_num_rows($result); // 게시물 수
-            $list = 5; // 리스트 개수
+            $list = 10; // 리스트 개수
             $block_num = 5; // 블록 당 보여줄 페이지 개수
           
             $block = ceil($page/$block_num); // 현재 페이지 블록 구하기
@@ -118,7 +122,6 @@ class Forum
 		$sql = "select * from board where idx='".$no."'";
         $result = mysqli_query($db, $sql);
 		$board = mysqli_fetch_array($result);
-
 
 	    echo "<h2>".$board['title']."</h2>";
 		echo "ID: ".$board['name'];
