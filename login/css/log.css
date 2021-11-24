@@ -16,8 +16,8 @@ button, textarea, select, option, input {
 
 .underlay-photo {
     animation: hue-rotate 4s infinite;
-    background: url('https://c.wallhere.com/photos/19/19/1920x1200_px_art_artistic_artwork_creepy_Dark_Evil_fantasy-1870879.jpg!d');
-    background-size: cover;
+    background: url('https://pbs.twimg.com/media/CTuxGyCWEAAkyIb.jpg');
+    /* background-size: cover; */
     -webkit-filter: grayscale(30%);
     z-index: -1;
 }
