@@ -66,6 +66,16 @@ table {
     }
 }
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+
+
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
 textarea, select, option, input {
     color:#000000;
 }
