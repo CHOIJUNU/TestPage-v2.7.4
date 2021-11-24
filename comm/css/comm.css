@@ -3,48 +3,32 @@ h1, h4 {
 }
 
 a {
-    font-size: large;
+    font-size: 17px;
     color: #FFFFFF;
     text-decoration-line: none;
 }
 
 table {
-    border-right:none;
-    border-left:none;
-    border-top:none;
-    border-bottom:none;
-    color: white;
+    color: #FFFFFF;
     margin-top: 17vh;
     border-collapse : collapse;
   }
    td {
-    background: rgba(255, 255, 255, 0.397);
-    color: white;
+    background: rgba(0, 0, 0, 0.664);
   }
 
   th {
-    background: rgba(255, 255, 255, 0.658);
-    color: white;
+    background: rgb(0, 0, 0);
     font-weight: bold;
-    font-size: 20px;
+    font-size: 17px;
 
   }
 
   th, td {
-    border-right:none;
-    border-left:none;
-    border-top:none;
-    border-bottom:none;
     padding: 8px;
-    color: white;
   }
   
-
-  tr:nth-child(even) {
-    background: #efefef;
-  }
-  
-  tr:hover {
+  .tr:hover {
     background: #d1d1d1;
   }
 
@@ -67,6 +51,16 @@ table {
     background: rgba(0,0,0,0.7);
     z-index: -1;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+
+
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+
 
 @keyframes hue-rotate {
     from {
