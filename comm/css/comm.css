@@ -3,7 +3,7 @@ h1, h4 {
 }
 
 a {
-    font-size: 17px;
+    font-size: 18px;
     color: #FFFFFF;
     text-decoration-line: none;
 }
@@ -20,7 +20,7 @@ table {
   th {
     background: rgb(0, 0, 0);
     font-weight: bold;
-    font-size: 17px;
+    font-size: 20px;
 
   }
 
@@ -57,7 +57,7 @@ table {
 
 body, html {
   font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
 }
 
