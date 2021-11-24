@@ -73,8 +73,8 @@ body, html {
 .login input[type=password] {
   animation: bounce1 1.3s;
 }
-.login input[type=submit], .sign input[type=submit],
-.sign input[type=button], .login input[type=button] {
+.login input[type=submit],
+.login input[type=button] {
   border: 0;
   outline: 0;
   padding: 13px 18px;
@@ -82,7 +82,18 @@ body, html {
   border-radius: 2px;
   font-weight: 600;
   animation: bounce2 1.6s;
-} 
+}
+
+.sign input[type=submit] {
+  border: 0;
+  outline: 0;
+  padding: 13px 18px;
+  margin: 40px 0 0 0;
+  border-radius: 2px;
+  font-weight: 600;
+  animation: bounce2 1.3s;
+}
+
 .login input[type=submit], .sign input[type=submit] {
   float: right;
   background: #fff;  
