@@ -84,12 +84,12 @@ textarea, select, option, input {
 .button {
   border: 0;
   outline: 0;
-  padding: 13px 18px;
-  margin: 7px;
+  padding: 7px 10px;
+  margin: 3px;
   float: left;
   display: block;
   border-radius: 2px;
-  font-weight: 600;
+  font-weight: 500;
   background: #fff;  
   color: #34495e;
   outline: none;
