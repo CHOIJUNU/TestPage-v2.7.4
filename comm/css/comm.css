@@ -58,8 +58,8 @@ table {
 
 .underlay-photo {
     animation: hue-rotate 4s infinite;
-    background: url('https://get.wallhere.com/photo/1920x1200-px-ART-artistic-artwork-creepy-dark-evil-fantasy-Halloween-horror-original-scary-spooky-1872787.jpg');
-    background-size: cover;
+    background: url('https://pbs.twimg.com/media/CTuxGyCWEAAkyIb.jpg');
+    /* background-size: cover; */
     -webkit-filter: grayscale(30%);
     z-index: -1;
 }
