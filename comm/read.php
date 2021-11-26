@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="comm/css/read.css">
 <body><br>
 <a href="?mode=forum"><button>Back</button></a><br><br><br><br>
-	<?php
+    <?php
         $forum->read();
 	?>
     <h3>Comment</h3>
@@ -32,4 +32,43 @@
 </body>
 <div class="underlay-photo"></div>
 <div class="underlay-black"></div>
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('.btn_read_mod').click(function(){
+            var content = $('#readcon').val();
+            $.ajax({
+                type:"POST",
+                data:{"content":content},
+                dataType:"html",
+                url:"?mode=read_mod&idx=<?php $no = $_GET['idx']; echo $no; ?>",
+                success:function(data){
+                    console.log(data);
+                    $('#readmodPopup').show().html(data);
+                },error:function(){
+                    console.log('error');
+                }
+            });
+        });
+        $('.btn_reply_mod').click(function(){
+            var content = $('#replycon').val();
+            $.ajax({
+                type:"POST",
+                data:{"content":content},
+                dataType:"html",
+                url:"?mode=reply_mod&idx=<?php echo $forum->reply_no(); ?>",
+                success:function(data){
+                    console.log(data);
+                    $('#replymodPopup').show().html(data);
+                },error:function(){
+                    console.log('error');
+                }
+            });
+        });
+	});
+</script>
 </html>
