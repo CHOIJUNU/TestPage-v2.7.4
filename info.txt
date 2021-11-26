@@ -5,10 +5,11 @@ v2.2.0 = be able to search posted in forum
 v2.3.0 = be able to comment in posted
 v2.4.0 = be able to upload img in forum
 v2.5.0 = use css
-v2.6.0 = use class files
+v2.6.0 = change files to class files
+v2.7.0 = use ajax to modify
 
 //to be updated// 
-v2.7.0 = be able to find user's pwd
+v2.n.0 = be able to find user's pwd
 v2.n.1 = charset patch (on hold)
 
 
