@@ -134,6 +134,7 @@ class Forum
         echo "<br><img src='comm/upload/$board[file]'><br>";}
         echo "<b><h4>";
         echo nl2br("$board[content]");
+        echo "<div id=\"readmodPopup\" style=\"display:none;\">Modify</div>";
         echo "</b></h4><hr>";
     }
 
@@ -149,7 +150,7 @@ class Forum
 		$board = mysqli_fetch_array($result);
 
         if($_SESSION['id'] == $board['name']){ 
-            echo "<hr><a href=\"?mode=read_mod&idx=".$board['idx']."\";><button>Modify</button></a>\n"; 
+            echo "<hr><button class=\"btn_read_mod\">Modify</button>\n"; 
             echo "<form action=\"?mode=read&idx=".$board['idx']."\" method=\"post\">
             <input type = \"hidden\" name = \"read_del\" value = \"read_del\"><button>Delete</button></form>";
         }
@@ -192,7 +193,7 @@ class Forum
 	    $board = mysqli_fetch_array($result);
 
         echo "<textarea name=\"title\" rows=\"1\" cols=\"40\" placeholder=\"Title\" maxlength=\"100\" required>".$board['title']."</textarea><br>";
-        echo "<textarea name=\"content\" placeholder=\"Content\" required>".$board['content']."</textarea>";
+        echo "<textarea name=\"content\" cols=\"40\" id=\"readcon\" placeholder=\"Content\" required>".$board['content']."</textarea>";
     }
 
     //# 글 수정
@@ -206,7 +207,7 @@ class Forum
         $result = mysqli_query($db, $sql);
 
         echo "<script>alert(\"Modified!\");</script>
-        <meta http-equiv=\"refresh\" content=\"0 url=?mode=forum\">";
+        <meta http-equiv=\"refresh\" content=\"0 url=?mode=read&idx=".$no."\">";
     }
 
     //# 글 삭제
@@ -243,7 +244,8 @@ class Forum
             echo "</b></h4>";
 
             if($_SESSION['id'] == $reply['name']){ 
-                echo "<a href=\"?mode=reply_mod&idx=".$reply['idx']."\";><button>Modify</button></a>\n";
+                echo "<div id=\"replymodPopup\" style=\"display:none;\">Modify</div>";
+                echo "<button class=\"btn_reply_mod\">Modify</button></a>\n";
                 echo "<form action=\"?mode=read&idx=".$reply['idx']."\" method=\"post\">
                 <input type = \"hidden\" name = \"reply_del\" value = \"reply_del\"><button>Delete</button></form>";
                 echo "<br><br><hr>";
@@ -286,7 +288,7 @@ class Forum
 
         echo "<input type=\"hidden\" name=\"reply_no\" value=\"".$reply_num."\">";
         echo "<input type=\"hidden\" name=\"board_no\" value=\"".$board_num['num']."\">";
-        echo "<textarea name=\"content\" placeholder=\"Content\" required>".$reply['content']."</textarea><br>";
+        echo "<textarea name=\"content\" id=\"replycon\" placeholder=\"Content\" required>".$reply['content']."</textarea><br>";
     }
 
     //# 댓글 수정
@@ -320,6 +322,19 @@ class Forum
         $result = mysqli_query($db, $sql);
 
         echo "<script>alert('Deleted!'); location.href='?mode=read&idx=".$reply['num']."';</script>";
+    }
+
+    //# 댓글 번호 불러오기
+    function reply_no()
+    {
+        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
+
+        $no = $_GET['idx'];
+        $sql = "select * from reply where num='".$no."' order by idx desc";
+        $result = mysqli_query($db, $sql);
+        $reply = mysqli_fetch_array($result);
+        $rno = $reply['idx'];
+        return $rno;
     }
 
 }
