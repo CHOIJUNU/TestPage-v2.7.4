@@ -7,11 +7,10 @@ v2.4.0 = be able to upload img in forum
 v2.5.0 = use css
 v2.6.0 = change files to class files
 v2.7.0 = use ajax to modify
+v2.7.1 = charset patch
 
 //to be updated// 
 v2.n.0 = be able to find user's pwd
-v2.n.1 = charset patch (on hold)
-
 
 
 DB: junwoo
