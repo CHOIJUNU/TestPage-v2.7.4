@@ -29,13 +29,17 @@ class Forum
             $result2 = mysqli_query($db, $sql2);
 		    $reply_count = mysqli_fetch_array($result2);
 
+            $sql3 = "select * from member where id='".$board['id']."'";
+            $result3 = mysqli_query($db, $sql3);
+		    $nick = mysqli_fetch_array($result3);
+
                 if(strlen($title)>30)
                 { 
                     $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
                 }     
 
             echo "<tbody><tr class=\"tr\" align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title." <b style=\"font-size:15px; color:red;\">[".$reply_count['cnt']."]</b></a></td>";
-            echo "<td width=\"120\">".$board['name']." </td>";
+            echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ]</td>";
             echo "<td width=\"200\">".$board['date']."</td>";
             echo "<td width=\"100\">".$board['hit']."</td></tr></tbody>";
         }
@@ -118,17 +122,21 @@ class Forum
 		$hit = $hit['hit'] + 1; 
 		$sql ="update board set hit = '".$hit."' where idx = '".$no."'";
         $update = mysqli_query($db, $sql);
-
-		$sql = "select * from board where idx='".$no."'";
+        
+        $sql = "select * from board where idx='".$no."'";
         $result = mysqli_query($db, $sql);
 		$board = mysqli_fetch_array($result);
 
+        $sql = "select * from member where id='".$board['id']."'";
+        $result = mysqli_query($db, $sql);
+		$nick = mysqli_fetch_array($result);
+
 	    echo "<h2>".$board['title']."</h2>";
-		echo "ID: ".$board['name'];
+		echo "Name: ".$nick['name']." [ ".$board['id']." ] ";
         echo "<br>";
-        echo "Date: ".$board['date'];
+        echo "Date: ".$board['date']." ";
         echo "<br>";
-        echo "Hit: ".$board['hit'];
+        echo "Hit: ".$board['hit']." ";
         echo "<br>";
         if(!empty($board['file'])){
         echo "<br><img src='comm/upload/$board[file]'><br>";}
@@ -149,7 +157,7 @@ class Forum
         $result = mysqli_query($db, $sql);
 		$board = mysqli_fetch_array($result);
 
-        if($_SESSION['id'] == $board['name']){ 
+        if($_SESSION['id'] == $board['id']){ 
             echo "<hr><button class=\"btn_read_mod\">Modify</button>\n"; 
             echo "<form action=\"?mode=read&idx=".$board['idx']."\" method=\"post\">
             <input type = \"hidden\" name = \"read_del\" value = \"read_del\"><button>Delete</button></form>";
@@ -161,7 +169,7 @@ class Forum
     {
         $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
 
-        $uname = $_SESSION['id']; 
+        $uid = $_SESSION['id']; 
         $title = $_REQUEST['title'];
         $content = $_REQUEST['content'];
         $date = date('Y-m-d-h-i'); 
@@ -176,8 +184,8 @@ class Forum
 
         // *중요* 업로드 할 파일은 파일 권한 숫자값 777로 바꿔주기 (안하면 파일 다운로드 실패)                         
 
-        if($uname && $title && $content){
-        $sql = "insert into board(name,title,content,date,file) values('".$uname."','".$title."','".$content."','".$date."','".$upfile."')"; 
+        if($uid && $title && $content){
+        $sql = "insert into board(id,title,content,date,file) values('".$uid."','".$title."','".$content."','".$date."','".$upfile."')"; 
         $result = mysqli_query($db, $sql);
         echo "<script>alert('Success!');location.href='?mode=forum';</script>";
         }
@@ -235,15 +243,19 @@ class Forum
         $result = mysqli_query($db, $sql);
 		while($reply = mysqli_fetch_array($result))
         {
-		    echo "ID: ".$reply['name'];
+            $sql = "select * from member where id='".$reply['id']."'";
+            $result = mysqli_query($db, $sql);
+		    $nick = mysqli_fetch_array($result);
+
+		    echo "Name: ".$nick['name']." [ ".$reply['id']." ] ";
             echo "<br>";
-			echo "Date: ".$reply['date'];
+			echo "Date: ".$reply['date']." ";
             echo "<br>";
             echo "<b><h4>";
             echo nl2br("$reply[content]");
             echo "</b></h4>";
 
-            if($_SESSION['id'] == $reply['name']){ 
+            if($_SESSION['id'] == $reply['id']){ 
                 echo "<div id=\"replymodPopup\" style=\"display:none;\">Modify</div>";
                 echo "<button class=\"btn_reply_mod\">Modify</button></a>\n";
                 echo "<form action=\"?mode=read&idx=".$reply['idx']."\" method=\"post\">
@@ -261,11 +273,11 @@ class Forum
         $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
 
         $no = $_GET['idx'];
-        $uname = $_SESSION['id'];
+        $uid = $_SESSION['id'];
         $date = date('Y-m-d-h-i');
     
-        if($no && $uname && $_POST['content']){
-            $sql = "insert into reply(num,name,content,date) values('".$no."','".$uname."','".$_POST['content']."','".$date."')";
+        if($no && $uid && $_POST['content']){
+            $sql = "insert into reply(num,id,content,date) values('".$no."','".$uid."','".$_POST['content']."','".$date."')";
             $result = mysqli_query($db, $sql);
             echo "<script>alert('Success!');location.href='?mode=read&idx=$no';</script>";
         }
