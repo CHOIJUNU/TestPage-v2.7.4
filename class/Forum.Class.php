@@ -243,9 +243,9 @@ class Forum
         $result = mysqli_query($db, $sql);
 		while($reply = mysqli_fetch_array($result))
         {
-            $sql = "select * from member where id='".$reply['id']."'";
-            $result = mysqli_query($db, $sql);
-		    $nick = mysqli_fetch_array($result);
+            $sql2 = "select * from member where id='".$reply['id']."'";
+            $result2 = mysqli_query($db, $sql2);
+		    $nick = mysqli_fetch_array($result2);
 
 		    echo "Name: ".$nick['name']." [ ".$reply['id']." ] ";
             echo "<br>";
