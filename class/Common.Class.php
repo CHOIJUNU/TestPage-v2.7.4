@@ -14,6 +14,7 @@ class Common
         }
 
         session_start();
+        header("Content-Type:text/html;charset=EUC-KR");
     }
 
 
@@ -68,7 +69,7 @@ class Common
             
             session_start(); 
             $_SESSION['id'] = $uid;
-            echo "<script>alert('Success!!');location.replace('?mode=main');</script>";
+            echo "<script>alert('Success!!".$uuu."');location.replace('?mode=main');</script>";
             
             }else{
             echo "<script> alert('Retry!!'); location.replace('?mode=login'); </script>";
