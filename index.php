@@ -2,10 +2,9 @@
 
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'/class/Common.Class.php';
-    include $_SERVER['DOCUMENT_ROOT'].'/class/Forum.Class.php';
     $common = new Common;
-    $forum = new Forum;
-    $common->dbconn();
+    include $_SERVER['DOCUMENT_ROOT'].'/class/Forum.Class.php';
+    $forum = new Forum($common);
 
     switch($_GET['mode']){
 		case 'login' :
