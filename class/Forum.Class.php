@@ -2,13 +2,17 @@
 
 class Forum
 {
-    var $forum;
+    var $db;
+
+    //# DB 불러오기
+    function Forum($_db)
+	{
+		$this->db = $_db;
+	}
 
     //# 페이징 및 리스트 출력
     function paging($where)
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-        
         if(isset($_GET['page']))
         {
             $page = $_GET['page'];
@@ -19,18 +23,18 @@ class Forum
 
         $sql = " select * from board ";
         $sql .= " ".$where." order by idx desc limit ".$start_num.", ".$list." "; 
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 
         while($board = mysqli_fetch_array($result))
         {            
             $title=$board["title"];
 
             $sql2 = "select count(*) as cnt from reply where num=".$board['idx']."";
-            $result2 = mysqli_query($db, $sql2);
+            $result2 = mysqli_query($this->db->dbconn(), $sql2);
 		    $reply_count = mysqli_fetch_array($result2);
 
             $sql3 = "select * from member where id='".$board['id']."'";
-            $result3 = mysqli_query($db, $sql3);
+            $result3 = mysqli_query($this->db->dbconn(), $sql3);
 		    $nick = mysqli_fetch_array($result3);
 
                 if(strlen($title)>30)
@@ -48,15 +52,13 @@ class Forum
     //# 페이징 번호 출력
     function paging_num($where, $search_type, $search)
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-        
         if(isset($_GET['page']))
         {
             $page = $_GET['page'];
         }else{$page = 1;}
             $sql = "select * from board";
             $sql .= " ".$where." ";
-            $result = mysqli_query($db, $sql);
+            $result = mysqli_query($this->db->dbconn(), $sql);
             $row_num = mysqli_num_rows($result); // 게시물 수
             $list = 10; // 리스트 개수
             $block_num = 5; // 블록 당 보여줄 페이지 개수
@@ -112,23 +114,21 @@ class Forum
     //# 글 불러오기
     function read()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $no = $_GET['idx'];
         
         $sql = "select * from board where idx ='".$no."' ";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 	    $hit = mysqli_fetch_array($result);
 		$hit = $hit['hit'] + 1; 
 		$sql ="update board set hit = '".$hit."' where idx = '".$no."'";
-        $update = mysqli_query($db, $sql);
+        $update = mysqli_query($this->db->dbconn(), $sql);
         
         $sql = "select * from board where idx='".$no."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 		$board = mysqli_fetch_array($result);
 
         $sql = "select * from member where id='".$board['id']."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 		$nick = mysqli_fetch_array($result);
 
 	    echo "<h2>".$board['title']."</h2>";
@@ -149,12 +149,10 @@ class Forum
     //# 글 수정/삭제 버튼
     function read_btn()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $no = $_GET['idx'];
         
 		$sql = "select * from board where idx='".$no."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 		$board = mysqli_fetch_array($result);
 
         if($_SESSION['id'] == $board['id']){ 
@@ -167,8 +165,6 @@ class Forum
     //# 글 쓰기
     function write()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $uid = $_SESSION['id']; 
         $title = $_REQUEST['title'];
         $content = $_REQUEST['content'];
@@ -186,7 +182,7 @@ class Forum
 
         if($uid && $title && $content){
         $sql = "insert into board(id,title,content,date,file) values('".$uid."','".$title."','".$content."','".$date."','".$upfile."')"; 
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
         echo "<script>alert('Success!');location.href='?mode=forum';</script>";
         }
     }
@@ -194,10 +190,9 @@ class Forum
     //# 글 수정 페이지 불러오기
     function read_mod()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
         $no = $_GET['idx'];
 	    $sql = "select * from board where idx='$no'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 	    $board = mysqli_fetch_array($result);
 
         echo "<textarea name=\"title\" rows=\"1\" cols=\"40\" placeholder=\"Title\" maxlength=\"100\" required>".$board['title']."</textarea><br>";
@@ -207,12 +202,11 @@ class Forum
     //# 글 수정
     function read_mod_ok()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
         $no = $_GET['idx'];
         $title = $_REQUEST['title'];
         $content = $_REQUEST['content'];
         $sql = "update board set title='".$title."',content='".$content."' where idx='".$no."'"; 
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 
         echo "<script>alert(\"Modified!\");</script>
         <meta http-equiv=\"refresh\" content=\"0 url=?mode=read&idx=".$no."\">";
@@ -221,12 +215,11 @@ class Forum
     //# 글 삭제
     function read_del()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
         $no = $_GET['idx'];
 	    $sql = "delete from board where idx='$no'";
-	    $result = mysqli_query($db, $sql);
+	    $result = mysqli_query($this->db->dbconn(), $sql);
         $sql = "delete from reply where num='$no'";
-	    $result = mysqli_query($db, $sql);
+	    $result = mysqli_query($this->db->dbconn(), $sql);
 
         echo "<script>alert(\"Deleted!\");</script>
         <meta http-equiv=\"refresh\" content=\"0 url=?mode=forum\">";
@@ -235,16 +228,14 @@ class Forum
     //# 댓글 불러오기 및 댓글 수정/삭제 버튼
     function reply()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $no = $_GET['idx'];
 
         $sql = "select * from reply where num='".$no."' order by idx desc";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 		while($reply = mysqli_fetch_array($result))
         {
             $sql2 = "select * from member where id='".$reply['id']."'";
-            $result2 = mysqli_query($db, $sql2);
+            $result2 = mysqli_query($this->db->dbconn(), $sql2);
 		    $nick = mysqli_fetch_array($result2);
 
 		    echo "Name: ".$nick['name']." [ ".$reply['id']." ] ";
@@ -270,15 +261,13 @@ class Forum
     //# 댓글 쓰기
     function reply_ok()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $no = $_GET['idx'];
         $uid = $_SESSION['id'];
         $date = date('Y-m-d-h-i');
     
         if($no && $uid && $_POST['content']){
             $sql = "insert into reply(num,id,content,date) values('".$no."','".$uid."','".$_POST['content']."','".$date."')";
-            $result = mysqli_query($db, $sql);
+            $result = mysqli_query($this->db->dbconn(), $sql);
             echo "<script>alert('Success!');location.href='?mode=read&idx=$no';</script>";
         }
     }
@@ -286,16 +275,14 @@ class Forum
     //# 댓글 수정 페이지 불러오가
     function reply_mod()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $reply_num = $_GET['idx'];
 
         $sql = "select num from reply where idx='".$reply_num."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 	    $board_num = mysqli_fetch_array($result);
 
         $sql = "select content from reply where idx='".$reply_num."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
         $reply = mysqli_fetch_array($result);
 
         echo "<input type=\"hidden\" name=\"reply_no\" value=\"".$reply_num."\">";
@@ -306,14 +293,12 @@ class Forum
     //# 댓글 수정
     function reply_mod_ok()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $rno = $_POST['reply_no'];
         $bno = $_POST['board_no'];
         $date = date('Y-m-d-h-i');
 
         $sql = "update reply set content='".$_REQUEST['content']."', date='".$date."' where idx = '".$rno."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 
         echo "<script>alert('Modified!'); location.replace(\"?mode=read&idx=$bno\");</script>";
 
@@ -322,16 +307,14 @@ class Forum
     //# 댓글 삭제
     function reply_del()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $rno = $_GET['idx']; 
 
         $sql = "select * from reply where idx='".$rno."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
         $reply = mysqli_fetch_array($result);
 
         $sql = "delete from reply where idx='".$rno."'";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
 
         echo "<script>alert('Deleted!'); location.href='?mode=read&idx=".$reply['num']."';</script>";
     }
@@ -339,11 +322,9 @@ class Forum
     //# 댓글 번호 불러오기
     function reply_no()
     {
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
-
         $no = $_GET['idx'];
         $sql = "select * from reply where num='".$no."' order by idx desc";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->db->dbconn(), $sql);
         $reply = mysqli_fetch_array($result);
         $rno = $reply['idx'];
         return $rno;
