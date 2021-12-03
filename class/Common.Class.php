@@ -2,8 +2,6 @@
 
 class Common
 {
-    var $common;
-
     //# DB접속 및 세선 시작
     function dbconn()
     {
@@ -15,16 +13,25 @@ class Common
 
         session_start();
         header("Content-Type:text/html;charset=EUC-KR");
+        return $db;
     }
 
+    //# DB연결 함수
+    function __construct()
+    {
+        $this->dbconn();
+    }
 
     //# 메인 페이지에서 로그인 확인
     function logincheck_main()
     {
         if(isset($_SESSION['id']))
         { 
-            $uid = $_SESSION['id']; 
-            echo "<b>Welcome $uid!</b><br><br>";
+            $uid = $_SESSION['id'];
+            $sql = "select * from member where id='".$_SESSION['id']."' ";
+            $result = mysqli_query($this->dbconn(), $sql);
+            $name = mysqli_fetch_array($result);
+            echo "Welcome ".$name['name']." [ $uid ]<br><br>";
             echo "<a href=\"?mode=forum\"><button class=button>Forum</button></a><br>"; 
             echo "<form action=\"?mode=logout method=\"post\">
             <input type = \"hidden\" name = \"logout\" value = \"logout\"><button class=button2>Logout</button></form>";
@@ -62,10 +69,9 @@ class Common
             $uid=$_POST['id'];
             $upwd=$_POST['pwd'];
             
-            $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
             $sql = "SELECT * FROM member WHERE id='$uid'&&pwd='$upwd'";
             
-            if(mysqli_fetch_array(mysqli_query($db, $sql))){ 
+            if(mysqli_fetch_array(mysqli_query($this->dbconn(), $sql))){ 
             
             session_start(); 
             $_SESSION['id'] = $uid;
@@ -87,9 +93,8 @@ class Common
         $email = $_REQUEST['email'];
         $phone = $_REQUEST['phone'];
 
-        $db = mysqli_connect('localhost', 'junwoo', 'junwoo0306', 'junwoo');
         $sql = "INSERT INTO member VALUE ('$id', '$pwd', '$name', '$birth', '$email', '$phone')";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($this->dbconn(), $sql);
 
         echo "<script> alert('Success!!'); location.replace('?mode=login'); </script>";
     }
