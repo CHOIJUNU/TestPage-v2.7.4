@@ -4,7 +4,6 @@
     }
 ?>
 <!DOCTYPE html>
-<link rel="stylesheet" href="comm/css/mod.css">
 <body>
     <br>
     <form action="?mode=read_mod&idx=<?php $no = $_GET['idx']; echo $no; ?>" method="post">
