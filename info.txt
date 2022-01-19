@@ -5,12 +5,13 @@ v2.2.0 = be able to search posted in forum (2021.11.07)
 v2.3.0 = be able to comment in posted (2021.11.09)
 v2.4.0 = be able to upload img in forum (2021.11.10)
 v2.5.0 = use css (2021.11 ~ )
-v2.5.1 = patch function files to class files (2021.11.24)
+v2.5.1 = patch - function files to class files (2021.11.24)
 v2.6.0 = be able to print comments count (2021.11.25)
 v2.7.0 = use ajax to modify (2021.11.26)
 v2.7.1 = EUC-KR charset patch (2021.12.01)
-v2.7.2 = patch "id" to "name [ id ]" (2021.12.01)
+v2.7.2 = patch - "id" to "name [ id ]" (2021.12.01)
 v2.7.3 = using __construct() to patch DB connect (2021.l2.03)
+v2.7.4 = patch - if it is the current date, only the hour and minute are displayed / Otherwise, only the date is displayed
 
 //to be updated// 
 v2.n.0 = be able to find user's pwd
