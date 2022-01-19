@@ -40,7 +40,7 @@ class Forum
             $cdate = date('Y-m-d');
 
             if(substr($board['date'], 0,10) == $cdate){
-                $rdate = substr($board['date'], 11,8);
+                $rdate = substr($board['date'], 11,5);
             }else{
                 $rdate = substr($board['date'], 0,10);
             }
@@ -142,7 +142,7 @@ class Forum
         $cdate = date('Y-m-d');
 
         if(substr($board['date'], 0,10) == $cdate){
-            $rdate = substr($board['date'], 11,8);
+            $rdate = substr($board['date'], 11,5);
         }else{
             $rdate = substr($board['date'], 0,10);
         }
@@ -257,7 +257,7 @@ class Forum
             $cdate = date('Y-m-d');
 
             if(substr($reply['date'], 0,10) == $cdate){
-                $rdate = substr($reply['date'], 11,8);
+                $rdate = substr($reply['date'], 11,5);
             }else{
                 $rdate = substr($reply['date'], 0,10);
             }
