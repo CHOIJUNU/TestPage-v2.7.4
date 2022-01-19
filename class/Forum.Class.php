@@ -87,28 +87,28 @@ class Forum
           
             if($block <= 1)
             { 
-              echo "Back";
+              echo "<span style=\"font-size:20px;\">Back</span>";
             }else{
                 $pre = $block_start-1;
-                echo "<a style=\"color:red;font-size:15px;\" href='?mode=forum&page=$pre&search_type=$search_type&search=$search'>Back</a>";
+                echo "<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$pre&search_type=$search_type&search=$search'>Back</a>";
             }
             
           
             for($i=$block_start; $i<=$block_end; $i++)
             { 
               if($page == $i){ 
-              echo "\n$i\n";
+              echo "<span style=\"font-size:20px;\">\n$i\n</span>";
             }else{
-              echo "<a style=\"color:red;font-size:15px;\" href='?mode=forum&page=$i&search_type=$search_type&search=$search'>\n$i</a>";
+              echo "<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$i&search_type=$search_type&search=$search'>\n$i</a>";
             }}
               
           
             if($block >= $total_block)
             {
-              echo "\nNext";
+              echo "<span style=\"font-size:20px;\">\nNext</span>";
             }else{
               $next = $block_end+1;
-              echo "<a style=\"color:red;font-size:15px;\" href='?mode=forum&page=$next&search_type=$search_type&search=$search'>\nNext</a>";
+              echo "<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$next&search_type=$search_type&search=$search'>\nNext</a>";
             }
             
             
