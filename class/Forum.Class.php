@@ -99,7 +99,7 @@ class Forum
               if($page == $i){ 
               echo "<span style=\"font-size:20px;\">\n$i\n</span>";
             }else{
-              echo "<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$i&search_type=$search_type&search=$search'>\n$i</a>";
+              echo "\n<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$i&search_type=$search_type&search=$search'>$i</a>";
             }}
               
           
@@ -108,7 +108,7 @@ class Forum
               echo "<span style=\"font-size:20px;\">\nNext</span>";
             }else{
               $next = $block_end+1;
-              echo "<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$next&search_type=$search_type&search=$search'>\nNext</a>";
+              echo "\n<a style=\"color:red;font-size:20px;\" href='?mode=forum&page=$next&search_type=$search_type&search=$search'>Next</a>";
             }
             
             
