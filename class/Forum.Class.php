@@ -51,7 +51,11 @@ class Forum
                 }     
 
             echo "<tbody><tr class=\"tr\" align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title."</a> <b style=\"font-size:15px; color:red;\">[".$reply_count['cnt']."]</b></td>";
-            echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ]</td>";
+            if($board['id'] == "admin"){
+                echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ] <img src=\"../png/admin.png\" width=\"10\" height=\"10\"></td>";
+            }else{
+                echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ] <img src=\"../png/member.png\" width=\"10\" height=\"10\"></td>";
+            }
             echo "<td width=\"200\">".$rdate."</td>";
             echo "<td width=\"100\">".$board['hit']."</td></tr></tbody>";
         }
