@@ -8,6 +8,12 @@ a {
     text-decoration-line: none;
 }
 
+a:hover {
+  font-size: 18px;
+  color: #FFFFFF;
+  text-decoration-line: underline;
+}
+
 table {
     color: #FFFFFF;
     margin-top: 15vh;
