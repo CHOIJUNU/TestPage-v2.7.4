@@ -50,7 +50,7 @@ class Forum
                     $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
                 }     
 
-            echo "<tbody><tr class=\"tr\" align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title." <b style=\"font-size:15px; color:red;\">[".$reply_count['cnt']."]</b></a></td>";
+            echo "<tbody><tr class=\"tr\" align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title."</a> <b style=\"font-size:15px; color:red;\">[".$reply_count['cnt']."]</b></td>";
             echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ]</td>";
             echo "<td width=\"200\">".$rdate."</td>";
             echo "<td width=\"100\">".$board['hit']."</td></tr></tbody>";
