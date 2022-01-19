@@ -37,6 +37,14 @@ class Forum
             $result3 = mysqli_query($this->db->dbconn(), $sql3);
 		    $nick = mysqli_fetch_array($result3);
 
+            $cdate = date('Y-m-d');
+
+            if(substr($board['date'], 0,10) == $cdate){
+                $rdate = substr($board['date'], 11,8);
+            }else{
+                $rdate = substr($board['date'], 0,10);
+            }
+
                 if(strlen($title)>30)
                 { 
                     $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
@@ -44,7 +52,7 @@ class Forum
 
             echo "<tbody><tr class=\"tr\" align=\"center\"><td width=\"400\"><a href=\"?mode=read&idx=".$board['idx']."\">".$title." <b style=\"font-size:15px; color:red;\">[".$reply_count['cnt']."]</b></a></td>";
             echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ]</td>";
-            echo "<td width=\"200\">".$board['date']."</td>";
+            echo "<td width=\"200\">".$rdate."</td>";
             echo "<td width=\"100\">".$board['hit']."</td></tr></tbody>";
         }
     }
@@ -131,10 +139,18 @@ class Forum
         $result = mysqli_query($this->db->dbconn(), $sql);
 		$nick = mysqli_fetch_array($result);
 
+        $cdate = date('Y-m-d');
+
+        if(substr($board['date'], 0,10) == $cdate){
+            $rdate = substr($board['date'], 11,8);
+        }else{
+            $rdate = substr($board['date'], 0,10);
+        }
+
 	    echo "<h2>".$board['title']."</h2>";
 		echo "Name: ".$nick['name']." [ ".$board['id']." ] ";
         echo "<br>";
-        echo "Date: ".$board['date']." ";
+        echo "Date: ".$rdate." ";
         echo "<br>";
         echo "Hit: ".$board['hit']." ";
         echo "<br>";
@@ -238,9 +254,17 @@ class Forum
             $result2 = mysqli_query($this->db->dbconn(), $sql2);
 		    $nick = mysqli_fetch_array($result2);
 
+            $cdate = date('Y-m-d');
+
+            if(substr($reply['date'], 0,10) == $cdate){
+                $rdate = substr($reply['date'], 11,8);
+            }else{
+                $rdate = substr($reply['date'], 0,10);
+            }
+
 		    echo "Name: ".$nick['name']." [ ".$reply['id']." ] ";
             echo "<br>";
-			echo "Date: ".$reply['date']." ";
+			echo "Date: ".$rdate." ";
             echo "<br>";
             echo "<b><h4>";
             echo nl2br("$reply[content]");
