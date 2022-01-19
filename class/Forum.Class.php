@@ -152,7 +152,11 @@ class Forum
         }
 
 	    echo "<h2>".$board['title']."</h2>";
-		echo "Name: ".$nick['name']." [ ".$board['id']." ] ";
+		if($board['id'] == "admin"){
+            echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ] <img src=\"../png/admin.png\" width=\"10\" height=\"10\"></td>";
+        }else{
+            echo "<td width=\"200\">".$nick['name']." [ ".$board['id']." ] <img src=\"../png/member.png\" width=\"10\" height=\"10\"></td>";
+        }
         echo "<br>";
         echo "Date: ".$rdate." ";
         echo "<br>";
@@ -266,7 +270,11 @@ class Forum
                 $rdate = substr($reply['date'], 0,10);
             }
 
-		    echo "Name: ".$nick['name']." [ ".$reply['id']." ] ";
+		    if($reply['id'] == "admin"){
+                echo "<td width=\"200\">".$nick['name']." [ ".$reply['id']." ] <img src=\"../png/admin.png\" width=\"10\" height=\"10\"></td>";
+            }else{
+                echo "<td width=\"200\">".$nick['name']." [ ".$reply['id']." ] <img src=\"../png/member.png\" width=\"10\" height=\"10\"></td>";
+            }
             echo "<br>";
 			echo "Date: ".$rdate." ";
             echo "<br>";
