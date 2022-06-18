@@ -15,6 +15,7 @@ v2.7.4 = patch - if it is the current date, only the hour and minute are display
 v2.7.5 = patch - add admin, member icon (2022.01.19)
 
 //to be updated// 
+v2.n.0 = be able to manage menu(admin)
 v2.n.0 = be able to find user's pwd
 
 
